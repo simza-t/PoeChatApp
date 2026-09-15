@@ -25,25 +25,46 @@ public class LoginTest {
  
     @Test
     void testUsernameCorrectlyFormatted() {
-        // Test Data: "kyl_1"
         assertTrue(login.checkUserName("kyl_1"));
     }
  
     @Test
     void testUsernameIncorrectlyFormatted() {
-        // Test Data: "kyle!!!!!!!"
         assertFalse(login.checkUserName("kyle!!!!!!!"));
     }
     @Test
     void testPasswordMeetsComplexityRequirements() {
-        // Test Data: "Ch&&sec@ke99!"
         assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
     }
  
     @Test
     void testPasswordDoesNotMeetComplexityRequirements() {
-        // Test Data: "password"
         assertFalse(login.checkPasswordComplexity("password"));
+    }
+    
+    @Test
+    void testCellPhoneCorrectlyFormatted() {
+        assertTrue(login.checkCellPhoneNumber("+27838968976"));
+    }
+ 
+    @Test
+    void testCellPhoneIncorrectlyFormatted() {
+        assertFalse(login.checkCellPhoneNumber("08966553"));
+    }
+ 
+    
+    @Test
+    void testRegisterUserUsernameIncorrectlyFormatted() {
+        String result = login.registerUser("kyle!!!!!!!", "Ch&&sec@ke99!",
+                "+27838968976", "Kyle", "Naidoo");
+        assertEquals(Login.USERNAME_FAIL_MSG, result);
+    }
+ 
+    @Test
+    void testRegisterUserPasswordDoesNotMeetRequirements() {
+        String result = login.registerUser("kyl_1", "password",
+                "+27838968976", "Kyle", "Naidoo");
+        assertEquals(Login.PASSWORD_FAIL_MSG, result);
     }
     
 }
