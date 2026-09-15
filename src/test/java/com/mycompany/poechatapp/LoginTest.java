@@ -34,5 +34,16 @@ public class LoginTest {
         // Test Data: "kyle!!!!!!!"
         assertFalse(login.checkUserName("kyle!!!!!!!"));
     }
+    @Test
+    void testPasswordMeetsComplexityRequirements() {
+        // Test Data: "Ch&&sec@ke99!"
+        assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
+    }
+ 
+    @Test
+    void testPasswordDoesNotMeetComplexityRequirements() {
+        // Test Data: "password"
+        assertFalse(login.checkPasswordComplexity("password"));
+    }
     
 }
