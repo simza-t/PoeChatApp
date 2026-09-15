@@ -6,6 +6,7 @@ package com.mycompany.poechatapp;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  *
@@ -13,11 +14,25 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class LoginTest {
     
-    public LoginTest() {
+    private Login login;
+ 
+    @BeforeEach
+    void setUp() {
+        login = new Login();
     }
-
+ 
+   
+ 
     @Test
-    public void testSomeMethod() {
+    void testUsernameCorrectlyFormatted() {
+        // Test Data: "kyl_1"
+        assertTrue(login.checkUserName("kyl_1"));
+    }
+ 
+    @Test
+    void testUsernameIncorrectlyFormatted() {
+        // Test Data: "kyle!!!!!!!"
+        assertFalse(login.checkUserName("kyle!!!!!!!"));
     }
     
 }
