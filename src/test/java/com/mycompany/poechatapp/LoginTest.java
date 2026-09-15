@@ -66,5 +66,19 @@ public class LoginTest {
                 "+27838968976", "Kyle", "Naidoo");
         assertEquals(Login.PASSWORD_FAIL_MSG, result);
     }
+     @Test
+    void testRegisterUserCellPhoneIncorrectlyFormatted() {
+        String result = login.registerUser("kyl_1", "Ch&&sec@ke99!",
+                "08966553", "Kyle", "Naidoo");
+        assertEquals(Login.CELL_FAIL_MSG, result);
+    }
+ 
+    @Test
+    void testRegisterUserSuccessful() {
+        String result = login.registerUser("kyl_1", "Ch&&sec@ke99!",
+                "+27838968976", "Kyle", "Naidoo");
+        assertEquals(Login.USERNAME_SUCCESS_MSG + " " + Login.PASSWORD_SUCCESS_MSG
+                + " " + Login.CELL_SUCCESS_MSG, result);
+    }
     
 }
