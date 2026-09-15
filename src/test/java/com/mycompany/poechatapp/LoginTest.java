@@ -81,4 +81,33 @@ public class LoginTest {
                 + " " + Login.CELL_SUCCESS_MSG, result);
     }
     
+    @Test
+    void testLoginSuccessful() {
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976",
+                "Kyle", "Naidoo");
+        assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
+    }
+ 
+    @Test
+    void testLoginFailed() {
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976",
+                "Kyle", "Naidoo");
+        assertFalse(login.loginUser("kyl_1", "wrongPassword1!"));
+    }
+    
+    @Test
+    void testReturnLoginStatusSuccess() {
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976",
+                "Kyle", "Naidoo");
+        boolean loggedIn = login.loginUser("kyl_1", "Ch&&sec@ke99!");
+        assertEquals("Welcome Kyle, Naidoo it is great to see you again.",
+                login.returnLoginStatus(loggedIn));
+    }
+ 
+    @Test
+    void testReturnLoginStatusFailure() {
+        assertEquals(Login.LOGIN_FAIL_MSG, login.returnLoginStatus(false));
+    }
 }
+    
+
