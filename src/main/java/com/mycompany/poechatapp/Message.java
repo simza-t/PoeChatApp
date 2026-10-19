@@ -9,7 +9,6 @@
  */
 package com.mycompany.poechatapp;
 
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -364,4 +363,3 @@ public final class Message {
         return sb.toString();
     }
 }
-
