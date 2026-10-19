@@ -13,11 +13,31 @@ import java.util.Scanner;
 
 public class PoeChatApp {
 
+
+
+
+/**
+ * Entry point of the application.
+ *
+ * Part 1: the user registers an account and logs in.
+ * Part 2: ONLY once the login succeeds, the QuickChat messaging feature
+ *         starts, so users can only send messages if they have logged in
+ *         successfully.
+ */
+public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Login login = new Login();
         boolean running = true;
 
+        System.out.println("Please read through the following before you start:");
+        System.out.println("- Username: must contain an underscore (_) "
+                + "and be no more than 5 characters long.");
+        System.out.println("- Password: at least 8 characters, one "
+                + "capital letter, one number and one special character.");
+        System.out.println("- Cell phone: international format, e.g. "
+                + "+27831234567.");
 
         while (running) {
             System.out.println("\n=== Registration and Login System ===");
@@ -53,6 +73,12 @@ public class PoeChatApp {
 
                     boolean success = login.loginUser(loginUsername, loginPassword);
                     System.out.println(login.returnLoginStatus(success));
+
+                    if (success) {
+                        // Messaging is only available after a successful login.
+                        new Quickchat(scanner).run();
+                        running = false;
+                    }
                 }
                 case "3" -> {
                     running = false;
@@ -64,4 +90,7 @@ public class PoeChatApp {
 
         scanner.close();
     }
+
 }
+}
+    
