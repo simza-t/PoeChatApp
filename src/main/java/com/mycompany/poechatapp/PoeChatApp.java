@@ -14,6 +14,7 @@ import java.util.Scanner;
  *         only send messages if they have logged in successfully.
  */
 public class PoeChatApp {
+    private static final MessageStore STORE = new MessageStore();
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -97,6 +98,7 @@ public class PoeChatApp {
             System.out.println("1) Send Messages");
             System.out.println("2) Show recently sent messages");
             System.out.println("3) Quit");
+            System.out.println("4) Stored Messages");
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine().trim();
 
@@ -113,12 +115,13 @@ public class PoeChatApp {
                 case "2":
                     System.out.println("Coming Soon.");
                     break;
-                case "3":
+                                case "3":
                     running = false;
                     System.out.println("Thank you for using QuickChat. Goodbye!");
                     break;
+                
                 default:
-                    System.out.println("Invalid option, please choose 1, 2 or 3.");
+                    System.out.println("Invalid option, please choose 1, 2, 3 or 4.");
             }
         }
     }

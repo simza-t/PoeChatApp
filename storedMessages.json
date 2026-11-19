@@ -5,5 +5,26 @@
     "messageHash": "61:2:HOWYOU",
     "recipient": "+27817153888",
     "message": "how are you"
+  },
+  {
+    "messageID": "9238413418",
+    "messageNumber": 0,
+    "messageHash": "92:0:HEYHEY",
+    "recipient": "+27817153888",
+    "message": "hey"
+  },
+  {
+    "messageID": "7448328987",
+    "messageNumber": 0,
+    "messageHash": "74:0:HOWYOU",
+    "recipient": "+27817153888",
+    "message": "how are you?"
+  },
+  {
+    "messageID": "9713807725",
+    "messageNumber": 0,
+    "messageHash": "97:0:HOWYOU",
+    "recipient": "+27817153888",
+    "message": "how are you"
   }
 ]

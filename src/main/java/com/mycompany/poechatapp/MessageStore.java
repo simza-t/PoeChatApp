@@ -18,7 +18,6 @@ import java.util.List;
  * @author Student
  */
 public class MessageStore {
-    
 
     // ----- flags -----
     public static final String FLAG_SENT = "Sent";
