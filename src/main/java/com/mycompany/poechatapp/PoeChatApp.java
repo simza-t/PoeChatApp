@@ -115,11 +115,14 @@ public class PoeChatApp {
                 case "2":
                     System.out.println("Coming Soon.");
                     break;
-                                case "3":
+                case "3":
                     running = false;
                     System.out.println("Thank you for using QuickChat. Goodbye!");
                     break;
-                
+                case "4":
+                    STORE.loadStoredFromJson("messages.json");   // use your Part 2 file name
+                    StoredMessagesMenu.run(scanner, STORE);
+                    break;
                 default:
                     System.out.println("Invalid option, please choose 1, 2, 3 or 4.");
             }
