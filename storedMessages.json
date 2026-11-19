@@ -26,5 +26,12 @@
     "messageHash": "97:0:HOWYOU",
     "recipient": "+27817153888",
     "message": "how are you"
+  },
+  {
+    "messageID": "8508748074",
+    "messageNumber": 0,
+    "messageHash": "85:0:HELLOHELLO",
+    "recipient": "+21817153888",
+    "message": "hello"
   }
 ]
