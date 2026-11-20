@@ -1,113 +1,126 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
 package com.mycompany.poechatapp;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 
 /**
  *
- * @author Student
+ * @author user
  */
+
+
+//JUnit 4 tests use the official test data fromthe brief
+
 public class LoginTest {
-    
-    private Login login;
- 
-    @BeforeEach
-    void setUp() {
-        login = new Login();
+     private Login login;
+
+    @Before
+    public void setUp() {
+        login = new Login("Kyle", "Smith");
     }
- 
-   
- 
+
     @Test
-    void testUsernameCorrectlyFormatted() {
-        assertTrue(login.checkUserName("kyl_1"));
+    public void usernameCorrectlyFormattedMessage() {
+        assertEquals("Username successfully captured.", login.getUsernameMessage("kyl_1"));
     }
- 
+
     @Test
-    void testUsernameIncorrectlyFormatted() {
-        assertFalse(login.checkUserName("kyle!!!!!!!"));
+    public void usernameIncorrectlyFormattedMessage() {
+        assertEquals(
+            "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.",
+            login.getUsernameMessage("kyle!!!!!!!")
+        );
     }
+
     @Test
-    void testPasswordMeetsComplexityRequirements() {
-        assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
+    public void passwordMeetsComplexityMessage() {
+        assertEquals("Password successfully captured.", login.getPasswordMessage("Ch&&sec@ke99!"));
     }
- 
+
     @Test
-    void testPasswordDoesNotMeetComplexityRequirements() {
-        assertFalse(login.checkPasswordComplexity("password"));
+    public void passwordDoesNotMeetComplexityMessage() {
+        assertEquals(
+            "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.",
+            login.getPasswordMessage("password")
+        );
     }
-    
+
     @Test
-    void testCellPhoneCorrectlyFormatted() {
-        assertTrue(login.checkCellPhoneNumber("+27838968976"));
+    public void cellPhoneCorrectlyFormattedMessage() {
+        assertEquals("Cell number successfully captured.", login.getCellPhoneMessage("+27838968976"));
     }
- 
+
     @Test
-    void testCellPhoneIncorrectlyFormatted() {
-        assertFalse(login.checkCellPhoneNumber("08966553"));
+    public void cellPhoneIncorrectlyFormattedMessage() {
+        assertEquals(
+            "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.",
+            login.getCellPhoneMessage("08966553")
+        );
     }
- 
-    
+
     @Test
-    void testRegisterUserUsernameIncorrectlyFormatted() {
-        String result = login.registerUser("kyle!!!!!!!", "Ch&&sec@ke99!",
-                "+27838968976", "Kyle", "Naidoo");
-        assertEquals(Login.USERNAME_FAIL_MSG, result);
+    public void successfulLoginWelcomeMessage() {
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976");
+        assertEquals("Welcome Kyle, Smith it is great to see you again.",
+                login.returnLoginStatus("kyl_1", "Ch&&sec@ke99!"));
     }
- 
+
     @Test
-    void testRegisterUserPasswordDoesNotMeetRequirements() {
-        String result = login.registerUser("kyl_1", "password",
-                "+27838968976", "Kyle", "Naidoo");
-        assertEquals(Login.PASSWORD_FAIL_MSG, result);
+    public void failedLoginMessage() {
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976");
+        assertEquals("Username or password incorrect, please try again.",
+                login.returnLoginStatus("kyl_1", "wrongPass1!"));
     }
-     @Test
-    void testRegisterUserCellPhoneIncorrectlyFormatted() {
-        String result = login.registerUser("kyl_1", "Ch&&sec@ke99!",
-                "08966553", "Kyle", "Naidoo");
-        assertEquals(Login.CELL_FAIL_MSG, result);
-    }
- 
+
     @Test
-    void testRegisterUserSuccessful() {
-        String result = login.registerUser("kyl_1", "Ch&&sec@ke99!",
-                "+27838968976", "Kyle", "Naidoo");
-        assertEquals(Login.USERNAME_SUCCESS_MSG + " " + Login.PASSWORD_SUCCESS_MSG
-                + " " + Login.CELL_SUCCESS_MSG, result);
-    }
-    
-    @Test
-    void testLoginSuccessful() {
-        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976",
-                "Kyle", "Naidoo");
+    public void loginSuccessful() {
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976");
         assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
     }
- 
+
     @Test
-    void testLoginFailed() {
-        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976",
-                "Kyle", "Naidoo");
-        assertFalse(login.loginUser("kyl_1", "wrongPassword1!"));
+    public void loginFailed() {
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976");
+        assertFalse(login.loginUser("wrong", "password"));
     }
-    
+
     @Test
-    void testReturnLoginStatusSuccess() {
-        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976",
-                "Kyle", "Naidoo");
-        boolean loggedIn = login.loginUser("kyl_1", "Ch&&sec@ke99!");
-        assertEquals("Welcome Kyle, Naidoo it is great to see you again.",
-                login.returnLoginStatus(loggedIn));
+    public void usernameCorrectlyFormatted() {
+        assertTrue(login.checkUserName("kyl_1"));
     }
- 
+
     @Test
-    void testReturnLoginStatusFailure() {
-        assertEquals(Login.LOGIN_FAIL_MSG, login.returnLoginStatus(false));
+    public void usernameIncorrectlyFormatted() {
+        assertFalse(login.checkUserName("kyle!!!!!!!"));
+    }
+
+    @Test
+    public void passwordMeetsComplexity() {
+        assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
+    }
+
+    @Test
+    public void passwordDoesNotMeetComplexity() {
+        assertFalse(login.checkPasswordComplexity("password"));
+    }
+
+    @Test
+    public void cellPhoneCorrectlyFormatted() {
+        assertTrue(login.checkCellPhoneNumber("+27838968976"));
+    }
+
+    @Test
+    public void cellPhoneIncorrectlyFormatted() {
+        assertFalse(login.checkCellPhoneNumber("08966553"));
     }
 }
-    
-

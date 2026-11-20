@@ -33,5 +33,47 @@
     "messageHash": "85:0:HELLOHELLO",
     "recipient": "+21817153888",
     "message": "hello"
+  },
+  {
+    "messageID": "7381257749",
+    "messageNumber": 0,
+    "messageHash": "73:0:WHEREYOU",
+    "recipient": "+27817153888",
+    "message": "where are you?"
+  },
+  {
+    "messageID": "6173770503",
+    "messageNumber": 1,
+    "messageHash": "61:1:IWAITING",
+    "recipient": "+27817153888",
+    "message": "I am waiting"
+  },
+  {
+    "messageID": "9437385534",
+    "messageNumber": 0,
+    "messageHash": "94:0:AREOKAY",
+    "recipient": "+27849204890",
+    "message": "are you okay?"
+  },
+  {
+    "messageID": "5584337145",
+    "messageNumber": 0,
+    "messageHash": "55:0:HELLOHELLO",
+    "recipient": "+27849204890",
+    "message": "hello"
+  },
+  {
+    "messageID": "8052504577",
+    "messageNumber": 2,
+    "messageHash": "80:2:WHEREYOU",
+    "recipient": "+27817153888",
+    "message": "where are you"
+  },
+  {
+    "messageID": "9958445669",
+    "messageNumber": 0,
+    "messageHash": "99:0:UNJANIUNJANI",
+    "recipient": "+27817153888",
+    "message": "unjani?"
   }
 ]
